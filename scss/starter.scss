@@ -29,10 +29,16 @@ $enable-gradients: true;
 $enable-shadows: true;
 
 // Customize some defaults
-$body-color: #333;
+$body-color: #434343;
 $body-bg: #fff;
-$border-radius: .4rem;
-$success: #7952b3;
+$border-radius: .75rem;
+$primary:       #3BA014 !default;
+$secondary:     #E5E5E5 !default;
+$success:       #27AE60 !default;
+$info:          #2F80ED !default;
+$warning:       #F2994A !default;
+$danger:        #EB5757 !default;
+$custom-gray:   #C4C4C4 !default;
 
 @import "bootstrap/scss/functions"; // Required
 @import "bootstrap/scss/variables"; // Required
@@ -41,37 +47,37 @@ $success: #7952b3;
 @import "bootstrap/scss/root"; // Required
 @import "bootstrap/scss/reboot"; // Required
 @import "bootstrap/scss/type";
-// @import "bootstrap/scss/images";
-// @import "bootstrap/scss/code";
+@import "bootstrap/scss/images";
+@import "bootstrap/scss/code";
 @import "bootstrap/scss/grid";
-// @import "bootstrap/scss/tables";
-// @import "bootstrap/scss/forms";
+@import "bootstrap/scss/tables";
+@import "bootstrap/scss/forms";
 @import "bootstrap/scss/buttons";
 @import "bootstrap/scss/transitions";
-// @import "bootstrap/scss/dropdown";
-// @import "bootstrap/scss/button-group";
-// @import "bootstrap/scss/input-group"; // Requires forms
-// @import "bootstrap/scss/custom-forms";
-// @import "bootstrap/scss/nav";
-// @import "bootstrap/scss/navbar"; // Requires nav
-// @import "bootstrap/scss/card";
-// @import "bootstrap/scss/breadcrumb";
-// @import "bootstrap/scss/pagination";
-// @import "bootstrap/scss/badge";
-// @import "bootstrap/scss/jumbotron";
-// @import "bootstrap/scss/alert";
-// @import "bootstrap/scss/progress";
-// @import "bootstrap/scss/media";
-// @import "bootstrap/scss/list-group";
+@import "bootstrap/scss/dropdown";
+@import "bootstrap/scss/button-group";
+@import "bootstrap/scss/input-group"; // Requires forms
+@import "bootstrap/scss/custom-forms";
+@import "bootstrap/scss/nav";
+@import "bootstrap/scss/navbar"; // Requires nav
+@import "bootstrap/scss/card";
+@import "bootstrap/scss/breadcrumb";
+@import "bootstrap/scss/pagination";
+@import "bootstrap/scss/badge";
+@import "bootstrap/scss/jumbotron";
+@import "bootstrap/scss/alert";
+@import "bootstrap/scss/progress";
+@import "bootstrap/scss/media";
+@import "bootstrap/scss/list-group";
 @import "bootstrap/scss/close";
-// @import "bootstrap/scss/toasts";
+@import "bootstrap/scss/toasts";
 @import "bootstrap/scss/modal"; // Requires transitions
-// @import "bootstrap/scss/tooltip";
-// @import "bootstrap/scss/popover";
-// @import "bootstrap/scss/carousel";
-// @import "bootstrap/scss/spinners";
+@import "bootstrap/scss/tooltip";
+@import "bootstrap/scss/popover";
+@import "bootstrap/scss/carousel";
+@import "bootstrap/scss/spinners";
 @import "bootstrap/scss/utilities";
-// @import "bootstrap/scss/print";
+@import "bootstrap/scss/print";
 
 
 //
@@ -81,10 +87,68 @@ $success: #7952b3;
 @import "icon-list";
 
 body {
-  padding: 3rem 1.5rem;
+  // padding: 3rem 1.5rem;
 }
 
 // Style Bootstrap icons
 .bi {
   fill: currentColor;
+}
+
+.btn {
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);  
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.table-primary {
+  border-collapse: separate;
+  border-spacing: 0;
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 0.625rem;
+}
+
+.table-primary tbody tr {
+  margin: 0rem 1rem;
+}
+
+.table-primary tr:first-child th:first-child {
+  border-top-left-radius: 0.625rem;
+}
+
+.table-primary tr:first-child th:last-child {
+  border-top-right-radius: 0.625rem;
+}
+
+.table-primary tr:last-child td:first-child {
+  border-bottom-left-radius: 0.625rem;
+}
+
+.table-primary tr:last-child td:last-child {
+  border-bottom-right-radius: 0.625rem !important;
+}
+
+.table-primary, .table-primary>td {
+  background-color: $white;  
+}
+
+.table-primary th, .table-primary thead th {
+  border: none;
+  background-color: $primary;
+  color: $white;
+  font-size: 0.875rem;
+  font-weight: 700;
+}
+
+.table-primary td,  .table-primary tbody+tbody {
+  border-color: $custom-gray;
+  font-size: 0.875rem;
+  font-weight: 400;
+}
+
+@include media-breakpoint-up(md) {
+  .btn-theme {
+    min-width: 274px;
+  }
 }
