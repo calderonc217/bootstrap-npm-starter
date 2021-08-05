@@ -39,16 +39,20 @@ $info:          #2F80ED !default;
 $warning:       #F2994A !default;
 $danger:        #EB5757 !default;
 $custom-gray:   #C4C4C4 !default;
+$input-bg:      #F5F7FF !default;
+$input-border-width: 0;
 
-@import "bootstrap/scss/functions"; // Required
-@import "bootstrap/scss/variables"; // Required
-@import "bootstrap/scss/mixins"; // Required
+// Required
+@import "bootstrap/scss/functions";
+@import "bootstrap/scss/variables";
+@import "bootstrap/scss/mixins";
+@import "bootstrap/scss/utilities";
+@import "bootstrap/scss/root";
+@import "bootstrap/scss/reboot";
 
-@import "bootstrap/scss/root"; // Required
-@import "bootstrap/scss/reboot"; // Required
 @import "bootstrap/scss/type";
 @import "bootstrap/scss/images";
-@import "bootstrap/scss/code";
+@import "bootstrap/scss/containers";
 @import "bootstrap/scss/grid";
 @import "bootstrap/scss/tables";
 @import "bootstrap/scss/forms";
@@ -56,18 +60,15 @@ $custom-gray:   #C4C4C4 !default;
 @import "bootstrap/scss/transitions";
 @import "bootstrap/scss/dropdown";
 @import "bootstrap/scss/button-group";
-@import "bootstrap/scss/input-group"; // Requires forms
-@import "bootstrap/scss/custom-forms";
 @import "bootstrap/scss/nav";
 @import "bootstrap/scss/navbar"; // Requires nav
 @import "bootstrap/scss/card";
 @import "bootstrap/scss/breadcrumb";
+@import "bootstrap/scss/accordion";
 @import "bootstrap/scss/pagination";
 @import "bootstrap/scss/badge";
-@import "bootstrap/scss/jumbotron";
 @import "bootstrap/scss/alert";
 @import "bootstrap/scss/progress";
-@import "bootstrap/scss/media";
 @import "bootstrap/scss/list-group";
 @import "bootstrap/scss/close";
 @import "bootstrap/scss/toasts";
@@ -76,10 +77,19 @@ $custom-gray:   #C4C4C4 !default;
 @import "bootstrap/scss/popover";
 @import "bootstrap/scss/carousel";
 @import "bootstrap/scss/spinners";
-@import "bootstrap/scss/utilities";
-@import "bootstrap/scss/print";
+@import "bootstrap/scss/offcanvas"; // Requires transitions
+@import "bootstrap/scss/placeholders";
 
+// Utilities
+@import "bootstrap/scss/utilities/api";
 
+// Custom fonts
+@import "@fontsource/roboto/index";
+@import "@fontsource/roboto/100";
+@import "@fontsource/roboto/300";
+@import "@fontsource/roboto/500";
+@import "@fontsource/roboto/700";
+@import "@fontsource/roboto/900";
 //
 // Custom styles
 //
@@ -87,7 +97,7 @@ $custom-gray:   #C4C4C4 !default;
 @import "icon-list";
 
 body {
-  // padding: 3rem 1.5rem;
+  font-family: "Roboto";
 }
 
 // Style Bootstrap icons
@@ -96,21 +106,42 @@ body {
 }
 
 .btn {
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);  
+  color: $white;
+  background-image: none;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   font-size: 0.875rem;
   font-weight: 500;
   text-transform: uppercase;
+  &:hover {
+    color: $white;
+  }
+  &:focus {
+    color: $white;
+    box-shadow: none;
+  }
+}
+
+.btn-secondary {
+  color: $body-color;
+  &:hover {
+    color: $body-color;
+  }
+  &:focus {
+    color: $body-color;
+    box-shadow: none;
+  }
 }
 
 .table-primary {
   border-collapse: separate;
   border-spacing: 0;
-  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 2px 8px rgba(59, 45, 45, 0.2);
   border-radius: 0.625rem;
 }
 
-.table-primary tbody tr {
-  margin: 0rem 1rem;
+.table-primary>:not(caption)>*>* {
+  background-color: $white;
+  padding: 1rem 0.5rem;
 }
 
 .table-primary tr:first-child th:first-child {
@@ -125,17 +156,18 @@ body {
   border-bottom-left-radius: 0.625rem;
 }
 
-.table-primary tr:last-child td:last-child {
-  border-bottom-right-radius: 0.625rem !important;
+.table-primary tr:last-child td {
+  border-bottom: none;
 }
 
-.table-primary, .table-primary>td {
-  background-color: $white;  
+.table-primary tr:last-child td:last-child {
+  border-bottom: none;
+  border-bottom-right-radius: 0.625rem !important;
 }
 
 .table-primary th, .table-primary thead th {
   border: none;
-  background-color: $primary;
+  background-color: $primary;  
   color: $white;
   font-size: 0.875rem;
   font-weight: 700;
@@ -151,4 +183,14 @@ body {
   .btn-theme {
     min-width: 274px;
   }
+}
+
+.card {
+  border: none;
+  border-radius: 1.25rem;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.form-select, .form-control {
+  box-shadow: none;
 }
